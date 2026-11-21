@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Especialização em Custos e Controle de Obras</title>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--ink:#1b2430;--mute:#5b6675;--line:#dfe3e8;--pri:#0b5cab;--pri-ink:#fff;--ok:#1a7f4b;--bad:#b3261e;--warn:#9a6700}
+@media (prefers-color-scheme:dark){:root{--bg:#10151c;--card:#18202a;--ink:#e8edf3;--mute:#9aa7b6;--line:#2a3441;--pri:#4da3ff;--pri-ink:#07111d;--ok:#4cc38a;--bad:#ff8a80;--warn:#e3b341}}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+.app{display:grid;grid-template-columns:300px 1fr;min-height:100vh}
+aside{background:var(--card);border-right:1px solid var(--line);padding:16px;position:sticky;top:0;height:100vh;overflow:auto}
+main{padding:24px;max-width:960px;width:100%}
+h1{font-size:18px;margin:0 0 4px}h2{font-size:22px;margin:0 0 8px}h3{font-size:17px}
+.sub{color:var(--mute);font-size:13px}
+nav button{display:block;width:100%;text-align:left;background:none;border:0;border-radius:8px;padding:10px;margin:2px 0;color:var(--ink);cursor:pointer;font:inherit}
+nav button:hover{background:var(--bg)}nav button.on{background:var(--pri);color:var(--pri-ink)}
+nav .h{font-size:12px;opacity:.8}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:6px 0}.bar i{display:block;height:100%;background:var(--ok)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi b{display:block;font-size:26px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.tabs button,.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:8px;cursor:pointer;font:inherit}
+.tabs button.on,.btn.pri{background:var(--pri);color:var(--pri-ink);border-color:var(--pri)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.vid{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
+.vid:last-child{border:0}
+.vid a{color:var(--pri)}
+iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:8px;margin-top:8px}
+.q{margin:18px 0}.opt{display:block;padding:9px 12px;border:1px solid var(--line);border-radius:8px;margin:6px 0;cursor:pointer}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,transparent)}
+.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,transparent)}
+.exp{font-size:14px;color:var(--mute);margin-top:6px}
+.tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--mute)}
+.tag.ok{color:var(--ok);border-color:var(--ok)}
+.texto h2{font-size:18px;margin-top:20px}.texto table{border-collapse:collapse;width:100%}.texto td,.texto th{border:1px solid var(--line);padding:6px 10px;text-align:left}
+.aviso{border-left:4px solid var(--warn);padding:8px 12px;background:var(--bg);font-size:14px;border-radius:4px}
+.cert{border:6px double var(--pri);padding:40px;text-align:center;background:var(--card)}
+.menu-btn{display:none}
+@media (max-width:800px){.app{grid-template-columns:1fr}aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}aside nav{display:none}aside.open nav{display:block}.menu-btn{display:block;margin-top:8px}main{padding:16px}}
+@media print{aside,.noprint{display:none!important}.app{display:block}main{max-width:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside id="side">
+    <h1>Especialização em Custos e Controle de Obras</h1>
+    <div class="sub">Curso livre · 200 h · 10 disciplinas</div>
+    <div class="bar"><i id="sideBar"></i></div>
+    <div class="sub" id="sideTxt"></div>
+    <button class="btn menu-btn" onclick="document.getElementById('side').classList.toggle('open')">Menu</button>
+    <nav id="nav"></nav>
+  </aside>
+  <main id="main"></main>
+</div>
+
+<script src="data/m01.js"></script><script src="data/m02.js"></script><script src="data/m03.js"></script>
+<script src="data/m04.js"></script><script src="data/m05.js"></script><script src="data/m06.js"></script>
+<script src="data/m07.js"></script><script src="data/m08.js"></script><script src="data/m09.js"></script>
+<script src="data/m10.js"></script>
+<script>
+const C = window.CURRICULUM.sort((a,b)=>a.id-b.id);
+const PASS = 0.7, FINAL_N = 30;
+// Divisão da carga horária de cada disciplina (soma = horas)
+const SPLIT = { videos: .30, leitura: .30, pratica: .20, quiz: .20 };
+const KEY = "pos-custos-obras:v1";
+let S;
+try { S = JSON.parse(localStorage.getItem(KEY)) || {}; } catch { S = {}; }
+S.m = S.m || {}; S.final = S.final || null; S.nome = S.nome || "";
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} };
+const mod = id => (S.m[id] = S.m[id] || { v: {}, leitura: false, pratica: false, quiz: null });
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function horasMod(m) {
+  const s = mod(m.id), nv = m.videos.length, vd = Object.values(s.v).filter(Boolean).length;
+  const h = m.horas * (SPLIT.videos * vd / nv + (s.leitura ? SPLIT.leitura : 0) + (s.pratica ? SPLIT.pratica : 0)
+    + (s.quiz && s.quiz.pct >= PASS ? SPLIT.quiz : 0));
+  return h;
+}
+const total = () => C.reduce((a, m) => a + horasMod(m), 0);
+const totalHoras = () => C.reduce((a, m) => a + m.horas, 0);
+const tudoPronto = () => C.every(m => Math.abs(horasMod(m) - m.horas) < 1e-9);
+
+function renderNav(cur) {
+  const nav = document.getElementById("nav");
+  nav.innerHTML = `<button class="${cur === "home" ? "on" : ""}" data-go="home">Painel geral</button>` +
+    C.map(m => `<button class="${cur === m.id ? "on" : ""}" data-go="${m.id}">${m.id}. ${esc(m.titulo)}<div class="h">${horasMod(m).toFixed(1)} / ${m.horas} h</div></button>`).join("") +
+    `<button class="${cur === "final" ? "on" : ""}" data-go="final">Prova final e certificado</button>`;
+  nav.querySelectorAll("button").forEach(b => b.onclick = () => { go(b.dataset.go); document.getElementById("side").classList.remove("open"); });
+  const t = total(), T = totalHoras();
+  document.getElementById("sideBar").style.width = (100 * t / T) + "%";
+  document.getElementById("sideTxt").textContent = `${t.toFixed(1)} de ${T} h concluídas`;
+}
+
+function go(where, tab) {
+  const main = document.getElementById("main");
+  window.scrollTo(0, 0);
+  if (where === "home") { renderNav("home"); return home(main); }
+  if (where === "final") { renderNav("final"); return final(main); }
+  const m = C.find(x => x.id == where);
+  renderNav(m.id); modulo(main, m, tab || "visao");
+}
+
+function home(el) {
+  const t = total(), T = totalHoras();
+  el.innerHTML = `
+  <h2>Painel geral</h2>
+  <div class="aviso">Curso livre de autoestudo. <b>Não é pós-graduação lato sensu reconhecida pelo MEC</b> e o certificado emitido aqui é de conclusão interna, sem validade acadêmica oficial. Para título de especialista com validade, matricule-se em instituição credenciada; este material serve como trilha de estudo e preparação.</div>
+  <div class="card grid">
+    <div class="kpi"><b>${t.toFixed(1)} h</b><span class="sub">de ${T} h</span></div>
+    <div class="kpi"><b>${Math.round(100 * t / T)}%</b><span class="sub">progresso</span></div>
+    <div class="kpi"><b>${C.filter(m => horasMod(m) >= m.horas - 1e-9).length}/${C.length}</b><span class="sub">disciplinas concluídas</span></div>
+    <div class="kpi"><b>${S.final ? Math.round(S.final.pct * 100) + "%" : "—"}</b><span class="sub">prova final</span></div>
+  </div>
+  <div class="card"><h3>Como as 20 h de cada disciplina são contabilizadas</h3>
+    <p>Vídeos (30%) · Leitura da apostila (30%) · Atividade prática (20%) · Avaliação com aprovação ≥ 70% (20%).</p>
+    <p class="sub">As horas representam a carga de estudo planejada para o conjunto da disciplina (inclui assistir às playlists completas, estudar o PDF, fazer a prática e revisar). Seja honesto no autorregistro: o app só mede o que você marca.</p></div>
+  <div class="card">${C.map(m => `<div style="margin:10px 0"><a href="#" data-go="${m.id}"><b>${m.id}. ${esc(m.titulo)}</b></a>
+    <div class="bar"><i style="width:${100 * horasMod(m) / m.horas}%"></i></div><span class="sub">${horasMod(m).toFixed(1)}/${m.horas} h</span></div>`).join("")}</div>
+  <button class="btn noprint" id="reset">Zerar progresso</button>`;
+  el.querySelectorAll("[data-go]").forEach(a => a.onclick = e => { e.preventDefault(); go(a.dataset.go); });
+  el.querySelector("#reset").onclick = () => { if (confirm("Apagar todo o progresso deste navegador?")) { S = { m: {}, final: null, nome: "" }; save(); go("home"); } };
+}
+
+function modulo(el, m, tab) {
+  const s = mod(m.id);
+  const tabs = [["visao", "Visão geral"], ["videos", "Vídeos"], ["leitura", "Leitura (PDF)"], ["pratica", "Prática"], ["quiz", "Avaliação"]];
+  const pdf = `pdfs/modulo-${String(m.id).padStart(2, "0")}.pdf`;
+  let body = "";
+  if (tab === "visao") body = `<div class="card"><h3>Ementa</h3><ul>${m.ementa.map(e => `<li>${esc(e)}</li>`).join("")}</ul>
+      <p class="sub">${m.horas} h · ${m.videos.length} vídeos · 1 apostila · 1 prática · ${m.quiz.length} questões</p></div>`;
+  if (tab === "videos") body = `<div class="card">${m.videos.map((v, i) => `
+      <div><div class="vid"><div><b>${esc(v.t)}</b><br>${v.id ? "" : `<a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(v.q)}">Buscar no YouTube: “${esc(v.q)}”</a>`}</div>
+      <label><input type="checkbox" data-v="${i}" ${s.v[i] ? "checked" : ""}> assisti</label></div>
+      ${v.id ? `<iframe loading="lazy" allowfullscreen src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.id)}"></iframe>` : ""}</div>`).join("")}
+      <p class="sub">Escolha playlists/aulas completas e de fonte confiável (universidades, conselhos, entidades técnicas). Para embutir o player, informe o <code>id</code> do vídeo em <code>data/mNN.js</code>.</p></div>`;
+  if (tab === "leitura") body = `<div class="card"><p><a class="btn pri" href="${pdf}" target="_blank">Abrir/baixar PDF da apostila</a></p>
+      <label><input type="checkbox" id="lido" ${s.leitura ? "checked" : ""}> Li e estudei a apostila</label></div>
+      <div class="card texto">${m.texto}</div>`;
+  if (tab === "pratica") body = `<div class="card"><h3>Atividade prática</h3><p>${esc(m.pratica)}</p>
+      <label><input type="checkbox" id="prat" ${s.pratica ? "checked" : ""}> Concluí a atividade prática</label></div>`;
+  if (tab === "quiz") return quiz(el, m, tabs);
+  el.innerHTML = `<div class="noprint sub">Disciplina ${m.id} de ${C.length}</div><h2>${esc(m.titulo)}</h2>
+    <div class="tabs">${tabs.map(t => `<button data-t="${t[0]}" class="${t[0] === tab ? "on" : ""}">${t[1]}</button>`).join("")}</div>${body}`;
+  bindTabs(el, m);
+  el.querySelectorAll("[data-v]").forEach(c => c.onchange = () => { s.v[c.dataset.v] = c.checked; save(); renderNav(m.id); });
+  const l = el.querySelector("#lido"); if (l) l.onchange = () => { s.leitura = l.checked; save(); renderNav(m.id); };
+  const p = el.querySelector("#prat"); if (p) p.onchange = () => { s.pratica = p.checked; save(); renderNav(m.id); };
+}
+function bindTabs(el, m) { el.querySelectorAll("[data-t]").forEach(b => b.onclick = () => go(m.id, b.dataset.t)); }
+
+function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+function runQuiz(el, questions, title, onDone) {
+  // embaralha também as alternativas, mantendo o gabarito
+  const qs = shuffle(questions).map(q => {
+    const idx = shuffle(q.o.map((_, i) => i));
+    return { q: q.q, o: idx.map(i => q.o[i]), c: idx.indexOf(q.c), e: q.e };
+  });
+  const ans = new Array(qs.length).fill(null);
+  el.innerHTML = `<h3>${esc(title)}</h3><p class="sub">Aprovação: ${PASS * 100}% de acertos. As alternativas são embaralhadas a cada tentativa.</p>` +
+    qs.map((q, i) => `<div class="card q"><b>${i + 1}. ${esc(q.q)}</b>${q.o.map((o, j) => `<label class="opt"><input type="radio" name="q${i}" value="${j}"> ${esc(o)}</label>`).join("")}<div class="exp" id="e${i}"></div></div>`).join("") +
+    `<button class="btn pri" id="fin">Corrigir</button>`;
+  el.querySelector("#fin").onclick = () => {
+    let ok = 0;
+    qs.forEach((q, i) => {
+      const sel = el.querySelector(`input[name=q${i}]:checked`); const v = sel ? +sel.value : null;
+      el.querySelectorAll(`input[name=q${i}]`).forEach(r => { const lab = r.parentElement; r.disabled = true; if (+r.value === q.c) lab.classList.add("ok"); else if (+r.value === v) lab.classList.add("bad"); });
+      if (v === q.c) ok++;
+      el.querySelector("#e" + i).textContent = (v === q.c ? "✔ Correto. " : (v === null ? "Sem resposta. " : "✘ Incorreto. ")) + q.e;
+    });
+    const pct = ok / qs.length; el.querySelector("#fin").remove();
+    const r = document.createElement("div"); r.className = "card";
+    r.innerHTML = `<h3>${ok}/${qs.length} (${Math.round(pct * 100)}%) — ${pct >= PASS ? '<span class="tag ok">Aprovado</span>' : '<span class="tag">Não atingiu 70%</span>'}</h3>`;
+    el.appendChild(r); onDone(pct);
+  };
+}
+
+function quiz(el, m, tabs) {
+  const s = mod(m.id);
+  el.innerHTML = `<h2>${esc(m.titulo)}</h2><div class="tabs">${tabs.map(t => `<button data-t="${t[0]}" class="${t[0] === "quiz" ? "on" : ""}">${t[1]}</button>`).join("")}</div>
+    <div class="card">Melhor resultado: ${s.quiz ? `${Math.round(s.quiz.pct * 100)}%` : "—"} <div class="noprint"><button class="btn pri" id="start">Iniciar avaliação</button></div></div><div id="qa"></div>`;
+  bindTabs(el, m);
+  el.querySelector("#start").onclick = () => runQuiz(el.querySelector("#qa"), m.quiz, "Avaliação da disciplina", pct => {
+    if (!s.quiz || pct > s.quiz.pct) s.quiz = { pct }; save(); renderNav(m.id);
+  });
+}
+
+function final(el) {
+  const pronto = tudoPronto();
+  el.innerHTML = `<h2>Prova final e certificado</h2>
+    <div class="card"><p>A prova final sorteia ${FINAL_N} questões de todo o banco (${C.reduce((a, m) => a + m.quiz.length, 0)} questões). Libera-se após concluir as 200 h (${total().toFixed(1)} h feitas).</p>
+    <p>Melhor resultado: ${S.final ? Math.round(S.final.pct * 100) + "%" : "—"}</p>
+    <button class="btn pri noprint" id="start" ${pronto ? "" : "disabled"}>${pronto ? "Iniciar prova final" : "Conclua todas as disciplinas para liberar"}</button></div><div id="qa"></div><div id="cert"></div>`;
+  const cert = () => {
+    if (S.final && S.final.pct >= PASS && pronto) {
+      el.querySelector("#cert").innerHTML = `<div class="card noprint"><label>Nome para o certificado: <input id="nome" value="${esc(S.nome)}" style="font:inherit;padding:6px"></label>
+      <button class="btn pri" id="imp">Gerar certificado</button></div>`;
+      el.querySelector("#imp").onclick = () => {
+        S.nome = el.querySelector("#nome").value.trim(); save();
+        el.querySelector("#cert").insertAdjacentHTML("beforeend", `<div class="cert"><h2>Certificado de Conclusão</h2><p>Certificamos que</p><h1>${esc(S.nome || "________________")}</h1>
+        <p>concluiu o curso livre <b>Especialização em Custos e Controle de Obras</b>,<br>com carga horária de autoestudo de <b>${totalHoras()} horas</b> e aproveitamento de <b>${Math.round(S.final.pct * 100)}%</b> na prova final.</p>
+        <p class="sub">Curso livre de autoestudo. Não equivale a pós-graduação lato sensu reconhecida pelo MEC.</p></div><button class="btn noprint" onclick="print()">Imprimir / salvar PDF</button>`);
+      };
+    }
+  };
+  cert();
+  const b = el.querySelector("#start");
+  if (pronto) b.onclick = () => {
+    const pool = C.flatMap(m => m.quiz);
+    runQuiz(el.querySelector("#qa"), shuffle(pool).slice(0, FINAL_N), "Prova final", pct => { if (!S.final || pct > S.final.pct) S.final = { pct }; save(); renderNav("final"); cert(); });
+  };
+}
+go("home");
+</script>
+</body>
+</html>
