@@ -302,7 +302,8 @@ function modulo(el, m, tab) {
     }).join("")}</div>
     <p class="sub" style="margin-top:14px">Vídeos de terceiros, selecionados por título e tema. Qualidade e atualização variam: confira data e fonte antes de adotar qualquer prática ou valor citado.</p>`;
   if (tab === "leitura") body = `<div class="card" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:space-between">
-      <a class="btn pri" href="${pdf}" target="_blank" rel="noopener">Baixar apostila em PDF</a>
+      <div><a class="btn pri" id="pdfbtn" href="${pdf}" download="apostila-disciplina-${pad(m.id)}.pdf" target="_blank" rel="noopener">Baixar apostila em PDF</a>
+      <div class="sub" id="pdfmsg" role="status" style="margin-top:6px"></div></div>
       <label class="chk"><input type="checkbox" id="lido" ${s.leitura ? "checked" : ""}> Li e estudei a apostila</label></div>
       <div class="card texto" style="margin-top:16px">${m.texto}</div>`;
   if (tab === "pratica") body = `<div class="card"><div class="eyebrow">Atividade prática</div><h3 style="margin:6px 0 10px">Aplique o que estudou</h3><p style="margin-top:0">${esc(m.pratica)}</p>
@@ -316,6 +317,22 @@ function modulo(el, m, tab) {
   el.querySelectorAll("[data-t]").forEach(b => b.onclick = () => go(m.id, b.dataset.t));
   el.querySelectorAll("[data-v]").forEach(c => c.onchange = () => { s.v[c.dataset.v] = c.checked; save(); refresh(m); });
   const l = el.querySelector("#lido"); if (l) l.onchange = () => { s.leitura = l.checked; save(); refresh(m); };
+  // Em hosts que bloqueiam download direto (artefato do claude.ai), usa a capacidade "downloads".
+  const pb = el.querySelector("#pdfbtn");
+  if (pb && window.claude && window.claude.use) window.claude.use("downloads").then(d => {
+    if (!d) return;
+    const msg = el.querySelector("#pdfmsg");
+    pb.onclick = async e => {
+      e.preventDefault(); msg.textContent = "Preparando o PDF…";
+      try {
+        const r = await fetch(pdf); if (!r.ok) throw new Error("fetch");
+        await d.save({ filename: `apostila-disciplina-${pad(m.id)}.pdf`, data: await r.blob() });
+        msg.textContent = "PDF salvo.";
+      } catch (err) {
+        msg.textContent = err && err.code === "declined" ? "Download cancelado." : "Não foi possível baixar o PDF. Leia a apostila na própria página, logo abaixo.";
+      }
+    };
+  }).catch(() => {});
   const p = el.querySelector("#prat"); if (p) p.onchange = () => { s.pratica = p.checked; save(); refresh(m); };
   const st = el.querySelector("#start");
   if (st) st.onclick = () => runQuiz(el.querySelector("#qa"), m.quiz, "Avaliação da disciplina", pct => {
