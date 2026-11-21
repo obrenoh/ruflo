@@ -3,56 +3,186 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Especialização em Custos e Controle de Obras</title>
+<title>Custos e Controle de Obras</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&display=swap">
 <style>
-:root{--bg:#f5f6f8;--card:#fff;--ink:#1b2430;--mute:#5b6675;--line:#dfe3e8;--pri:#0b5cab;--pri-ink:#fff;--ok:#1a7f4b;--bad:#b3261e;--warn:#9a6700}
-@media (prefers-color-scheme:dark){:root{--bg:#10151c;--card:#18202a;--ink:#e8edf3;--mute:#9aa7b6;--line:#2a3441;--pri:#4da3ff;--pri-ink:#07111d;--ok:#4cc38a;--bad:#ff8a80;--warn:#e3b341}}
+/* Conceito: campus digital. Marinho institucional + dourado de brasão, grade curricular à esquerda, conteúdo em cartões. */
+:root{
+  --bg:#f3f5f9; --surface:#ffffff; --ink:#14213d; --mute:#5a6478; --line:#e0e5ee; --soft:#eef1f7;
+  --navy:#0b2545; --navy-2:#13315c; --gold:#c9a227; --gold-ink:#7a5f00;
+  --btn-bg:#0b2545; --btn-ink:#ffffff; --ok:#1b7f5a; --bad:#b3261e;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif; --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --shadow:0 1px 2px rgba(11,37,69,.06),0 6px 18px rgba(11,37,69,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#08142a; --surface:#0f1f3a; --ink:#e8eef8; --mute:#9db0cb; --line:#20365a; --soft:#132646;
+  --navy:#0f2a52; --navy-2:#173a6e; --gold:#e0b83c; --gold-ink:#e0b83c;
+  --btn-bg:#e0b83c; --btn-ink:#0b2545; --ok:#4cc38a; --bad:#ff8a80; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#08142a; --surface:#0f1f3a; --ink:#e8eef8; --mute:#9db0cb; --line:#20365a; --soft:#132646;
+  --navy:#0f2a52; --navy-2:#173a6e; --gold:#e0b83c; --gold-ink:#e0b83c;
+  --btn-bg:#e0b83c; --btn-ink:#0b2545; --ok:#4cc38a; --bad:#ff8a80; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25); color-scheme:dark}
+
 *{box-sizing:border-box}
-body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
-.app{display:grid;grid-template-columns:300px 1fr;min-height:100vh}
-aside{background:var(--card);border-right:1px solid var(--line);padding:16px;position:sticky;top:0;height:100vh;overflow:auto}
-main{padding:24px;max-width:960px;width:100%}
-h1{font-size:18px;margin:0 0 4px}h2{font-size:22px;margin:0 0 8px}h3{font-size:17px}
-.sub{color:var(--mute);font-size:13px}
-nav button{display:block;width:100%;text-align:left;background:none;border:0;border-radius:8px;padding:10px;margin:2px 0;color:var(--ink);cursor:pointer;font:inherit}
-nav button:hover{background:var(--bg)}nav button.on{background:var(--pri);color:var(--pri-ink)}
-nav .h{font-size:12px;opacity:.8}
-.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:6px 0}.bar i{display:block;height:100%;background:var(--ok)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin:14px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.kpi b{display:block;font-size:26px}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
-.tabs button,.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:8px;cursor:pointer;font:inherit}
-.tabs button.on,.btn.pri{background:var(--pri);color:var(--pri-ink);border-color:var(--pri)}
+body{margin:0;font:16px/1.6 var(--sans);background:var(--bg);color:var(--ink)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.2;margin:0;text-wrap:balance}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Cabeçalho institucional */
+.top{background:var(--navy);color:#fff;border-bottom:3px solid var(--gold)}
+.top .wrap{display:flex;align-items:center;gap:16px;min-height:68px;flex-wrap:wrap;padding-block:10px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.crest{flex:none;width:42px;height:42px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;font:700 15px var(--serif);color:var(--gold);letter-spacing:.5px}
+.brand b{display:block;font:600 18px/1.2 var(--serif)}
+.brand small{display:block;font-size:12px;opacity:.75;letter-spacing:.04em;text-transform:uppercase}
+.spacer{flex:1}
+.hours{display:flex;align-items:center;gap:10px;font-size:13px}
+.hours .bar{width:140px;background:rgba(255,255,255,.2)}
+.menu-btn{display:none;background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;padding:6px 12px;cursor:pointer}
+
+.layout{display:grid;grid-template-columns:310px minmax(0,1fr);gap:28px;padding-block:28px}
+aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px;box-shadow:var(--shadow)}
+.navh{font:600 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);padding:10px 10px 6px}
+.ni{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:none;border:0;border-radius:10px;padding:9px 10px;cursor:pointer}
+.ni:hover{background:var(--soft)}
+.ni.on{background:var(--navy);color:#fff}
+.ni .num{flex:none;width:32px;height:32px;border-radius:8px;display:grid;place-items:center;background:var(--soft);font:700 13px var(--sans);color:var(--navy-2)}
+.ni.on .num{background:var(--gold);color:var(--navy)}
+.ni.done .num{background:var(--ok);color:#fff}
+.ni .nt{min-width:0;font-size:14px;line-height:1.3;font-weight:500}
+.ni .nt small{display:block;font-weight:400;opacity:.7;font-size:12px}
+/* Elementos comuns */
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--gold);border-radius:99px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+.card+.card,.stack>*+*{margin-top:16px}
+.eyebrow{font:600 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);padding:10px 18px;border-radius:10px;cursor:pointer;font-weight:600;font-size:15px;text-decoration:none;color:var(--ink)}
+.btn:hover{border-color:var(--navy-2)}
+.btn.pri{background:var(--btn-bg);color:var(--btn-ink);border-color:var(--btn-bg)}
+.btn.pri:hover{filter:brightness(1.1)}
 .btn:disabled{opacity:.5;cursor:not-allowed}
-.vid{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
-.vid:last-child{border:0}
-.vid a{color:var(--pri)}
-iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:8px;margin-top:8px}
-.q{margin:18px 0}.opt{display:block;padding:9px 12px;border:1px solid var(--line);border-radius:8px;margin:6px 0;cursor:pointer}
-.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,transparent)}
-.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,transparent)}
-.exp{font-size:14px;color:var(--mute);margin-top:6px}
-.tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--mute)}
-.tag.ok{color:var(--ok);border-color:var(--ok)}
-.texto h2{font-size:18px;margin-top:20px}.texto table{border-collapse:collapse;width:100%}.texto td,.texto th{border:1px solid var(--line);padding:6px 10px;text-align:left}
-.aviso{border-left:4px solid var(--warn);padding:8px 12px;background:var(--bg);font-size:14px;border-radius:4px}
-.cert{border:6px double var(--pri);padding:40px;text-align:center;background:var(--card)}
-.menu-btn{display:none}
-@media (max-width:800px){.app{grid-template-columns:1fr}aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}aside nav{display:none}aside.open nav{display:block}.menu-btn{display:block;margin-top:8px}main{padding:16px}}
-@media print{aside,.noprint{display:none!important}.app{display:block}main{max-width:none}}
+.btn.ghost{background:transparent}
+.sub{color:var(--mute);font-size:14px}
+.chk{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:500}
+.chk input{width:18px;height:18px;accent-color:var(--navy-2)}
+
+/* Início */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;border-radius:18px;padding:36px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;border-bottom:4px solid var(--gold)}
+.hero .eyebrow{color:var(--gold)}
+.hero h1{font-size:clamp(28px,4vw,42px);margin:8px 0 12px}
+.hero p{margin:0 0 20px;max-width:56ch;opacity:.88}
+.hero .btn.pri{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.ring{position:relative;width:170px;height:170px}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .c{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.ring .c b{font:700 36px var(--serif);display:block;line-height:1}
+.ring .c span{font-size:12px;opacity:.8}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:18px 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+.stat b{display:block;font:700 28px var(--serif);color:var(--navy-2)}
+:root[data-theme="dark"] .stat b{color:var(--gold)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .stat b{color:var(--gold)}}
+.stat span{color:var(--mute);font-size:13px}
+.sect{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:30px 0 12px}
+.sect h2{font-size:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.dc{display:flex;flex-direction:column;gap:12px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;cursor:pointer;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.dc:hover{transform:translateY(-2px);border-color:var(--gold)}
+.dc .n{font:700 13px var(--sans);color:var(--gold-ink);letter-spacing:.1em}
+.dc h3{font-size:18px}
+.dc .meta{display:flex;justify-content:space-between;font-size:13px;color:var(--mute)}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:99px;background:var(--soft);color:var(--mute)}
+.tag.ok{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+.notice{border-left:4px solid var(--gold);background:var(--surface);border-radius:0 12px 12px 0;padding:16px 20px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:12px}
+.split div{background:var(--soft);border-radius:10px;padding:10px 12px;font-size:13px}
+.split b{display:block;font:700 20px var(--serif)}
+
+/* Disciplina */
+.banner{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-radius:18px;padding:28px 32px;border-bottom:4px solid var(--gold)}
+.banner .eyebrow{color:var(--gold)}
+.banner h2{font-size:clamp(24px,3vw,34px);margin:6px 0 16px}
+.steps{display:flex;gap:8px;flex-wrap:wrap}
+.step{display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:4px 12px;border-radius:99px;border:1px solid rgba(255,255,255,.35)}
+.step.ok{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:600}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:20px 0 18px;overflow-x:auto}
+.tabs button{background:none;border:0;padding:12px 16px;cursor:pointer;font-weight:600;color:var(--mute);border-bottom:3px solid transparent;white-space:nowrap}
+.tabs button.on{color:var(--ink);border-bottom-color:var(--gold)}
+.ementa{columns:2;column-gap:28px;padding-left:20px;margin:10px 0 0}
+.ementa li{break-inside:avoid;margin-bottom:6px}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.vc{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.vm{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,var(--navy),var(--navy-2));display:grid;place-items:center;text-decoration:none;color:#fff}
+.vm iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.play{width:64px;height:64px;border-radius:50%;background:var(--gold);display:grid;place-items:center}
+.play::after{content:"";margin-left:5px;border-left:20px solid var(--navy);border-top:12px solid transparent;border-bottom:12px solid transparent}
+.vm .vn{position:absolute;left:12px;top:10px;font:700 12px var(--sans);letter-spacing:.1em;color:var(--gold)}
+.vb{padding:14px 16px;display:flex;flex-direction:column;gap:12px;flex:1}
+.vb b{font:600 16px/1.35 var(--serif)}
+.vf{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;flex-wrap:wrap}
+.vf a{font-size:14px;font-weight:600;color:var(--gold-ink)}
+.texto{font-family:var(--serif);font-size:18px;line-height:1.7;max-width:72ch}
+.texto h2{font-size:23px;margin:28px 0 8px}
+.texto h2:first-child{margin-top:0}
+.texto table{border-collapse:collapse;width:100%;font:15px var(--sans);display:block;overflow-x:auto}
+.texto td,.texto th{border:1px solid var(--line);padding:8px 12px;text-align:left}
+.texto th{background:var(--soft)}
+.q{margin-top:16px}
+.q h3{font:600 18px/1.4 var(--serif);margin-bottom:12px;display:flex;gap:10px}
+.q h3 span{flex:none;color:var(--gold-ink)}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;border:1px solid var(--line);border-radius:10px;margin:8px 0;cursor:pointer}
+.opt:hover{border-color:var(--navy-2)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .l{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--soft);font:700 12px var(--sans)}
+.opt:has(input:checked){border-color:var(--navy-2);background:var(--soft)}
+.opt:has(input:checked) .l{background:var(--navy-2);color:#fff}
+.opt:has(input:focus-visible){outline:3px solid var(--gold);outline-offset:2px}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent)}
+.opt.ok .l{background:var(--ok);color:#fff}
+.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,transparent)}
+.opt.bad .l{background:var(--bad);color:#fff}
+.exp{font-size:14px;color:var(--mute);margin-top:8px}
+.score{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.score b{font:700 44px var(--serif)}
+.cert{border:3px solid var(--gold);outline:1px solid var(--gold);outline-offset:-12px;padding:48px 28px;text-align:center;background:var(--surface);border-radius:6px;margin-top:16px}
+.cert .crest{margin:0 auto 14px;width:60px;height:60px;color:var(--gold-ink);border-color:var(--gold-ink);font-size:20px}
+.cert h2{font-size:30px;letter-spacing:.04em}
+.cert .nome{font:italic 600 34px var(--serif);margin:14px 0;border-bottom:1px solid var(--line);display:inline-block;padding:0 24px 6px}
+
+@media (max-width:900px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:16px}
+  .score>div[style*="margin-left"]{margin-left:0!important}
+  aside{position:static;max-height:none;display:none}
+  aside.open{display:block}
+  .menu-btn{display:block}
+  .hero{grid-template-columns:1fr;padding:24px}
+  .ring{margin:0 auto}
+  .banner{padding:22px}
+  .ementa{columns:1}
+  .vgrid{grid-template-columns:1fr}
+  .hours .bar{width:90px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<div class="app">
-  <aside id="side">
-    <h1>Especialização em Custos e Controle de Obras</h1>
-    <div class="sub">Curso livre · 200 h · 10 disciplinas</div>
-    <div class="bar"><i id="sideBar"></i></div>
-    <div class="sub" id="sideTxt"></div>
-    <button class="btn menu-btn" onclick="document.getElementById('side').classList.toggle('open')">Menu</button>
-    <nav id="nav"></nav>
-  </aside>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><div class="crest" aria-hidden="true">CO</div>
+      <div><b>Especialização em Custos e Controle de Obras</b><small>Curso livre · 200 horas</small></div></div>
+    <div class="spacer"></div>
+    <div class="hours"><span id="topTxt"></span><div class="bar"><i id="topBar"></i></div></div>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="side">Disciplinas</button>
+  </div>
+</header>
+<div class="wrap layout">
+  <aside id="side" aria-label="Grade curricular"><nav id="nav"></nav></aside>
   <main id="main"></main>
 </div>
 
@@ -61,10 +191,10 @@ iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:8px;margin-top:8px}
 <script src="data/m07.js"></script><script src="data/m08.js"></script><script src="data/m09.js"></script>
 <script src="data/m10.js"></script>
 <script>
-const C = window.CURRICULUM.sort((a,b)=>a.id-b.id);
+const EMBED = true; // false em hosts que bloqueiam iframes do YouTube
+const C = window.CURRICULUM.sort((a, b) => a.id - b.id);
 const PASS = 0.7, FINAL_N = 30;
-// Divisão da carga horária de cada disciplina (soma = horas)
-const SPLIT = { videos: .30, leitura: .30, pratica: .20, quiz: .20 };
+const SPLIT = { videos: .30, leitura: .30, pratica: .20, quiz: .20 }; // soma = 1 (por disciplina)
 const KEY = "pos-custos-obras:v1";
 let S;
 try { S = JSON.parse(localStorage.getItem(KEY)) || {}; } catch { S = {}; }
@@ -72,145 +202,182 @@ S.m = S.m || {}; S.final = S.final || null; S.nome = S.nome || "";
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} };
 const mod = id => (S.m[id] = S.m[id] || { v: {}, leitura: false, pratica: false, quiz: null });
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const pad = n => String(n).padStart(2, "0");
 
+function stepsOf(m) {
+  const s = mod(m.id), vd = Object.values(s.v).filter(Boolean).length;
+  return [["Vídeos", vd === m.videos.length], ["Leitura", s.leitura], ["Prática", s.pratica], ["Avaliação", !!(s.quiz && s.quiz.pct >= PASS)]];
+}
 function horasMod(m) {
-  const s = mod(m.id), nv = m.videos.length, vd = Object.values(s.v).filter(Boolean).length;
-  const h = m.horas * (SPLIT.videos * vd / nv + (s.leitura ? SPLIT.leitura : 0) + (s.pratica ? SPLIT.pratica : 0)
-    + (s.quiz && s.quiz.pct >= PASS ? SPLIT.quiz : 0));
-  return h;
+  const s = mod(m.id), vd = Object.values(s.v).filter(Boolean).length;
+  return m.horas * (SPLIT.videos * vd / m.videos.length + (s.leitura ? SPLIT.leitura : 0) + (s.pratica ? SPLIT.pratica : 0) + (s.quiz && s.quiz.pct >= PASS ? SPLIT.quiz : 0));
 }
 const total = () => C.reduce((a, m) => a + horasMod(m), 0);
 const totalHoras = () => C.reduce((a, m) => a + m.horas, 0);
-const tudoPronto = () => C.every(m => Math.abs(horasMod(m) - m.horas) < 1e-9);
+const concluida = m => Math.abs(horasMod(m) - m.horas) < 1e-9;
+const tudoPronto = () => C.every(concluida);
+const nQuestoes = () => C.reduce((a, m) => a + m.quiz.length, 0);
 
 function renderNav(cur) {
   const nav = document.getElementById("nav");
-  nav.innerHTML = `<button class="${cur === "home" ? "on" : ""}" data-go="home">Painel geral</button>` +
-    C.map(m => `<button class="${cur === m.id ? "on" : ""}" data-go="${m.id}">${m.id}. ${esc(m.titulo)}<div class="h">${horasMod(m).toFixed(1)} / ${m.horas} h</div></button>`).join("") +
-    `<button class="${cur === "final" ? "on" : ""}" data-go="final">Prova final e certificado</button>`;
-  nav.querySelectorAll("button").forEach(b => b.onclick = () => { go(b.dataset.go); document.getElementById("side").classList.remove("open"); });
+  nav.innerHTML = `<div class="navh">Início</div>
+    <button class="ni ${cur === "home" ? "on" : ""}" data-go="home"><span class="num">⌂</span><span class="nt">Painel geral</span></button>
+    <div class="navh">Grade curricular</div>` +
+    C.map(m => `<button class="ni ${cur == m.id ? "on" : ""} ${concluida(m) ? "done" : ""}" data-go="${m.id}"><span class="num">${concluida(m) ? "✓" : pad(m.id)}</span><span class="nt">${esc(m.titulo)}<small>${horasMod(m).toFixed(1)} de ${m.horas} h</small></span></button>`).join("") +
+    `<div class="navh">Conclusão</div>
+    <button class="ni ${cur === "final" ? "on" : ""}" data-go="final"><span class="num">★</span><span class="nt">Prova final e certificado</span></button>`;
+  nav.querySelectorAll("button").forEach(b => b.onclick = () => go(b.dataset.go));
   const t = total(), T = totalHoras();
-  document.getElementById("sideBar").style.width = (100 * t / T) + "%";
-  document.getElementById("sideTxt").textContent = `${t.toFixed(1)} de ${T} h concluídas`;
+  document.getElementById("topBar").style.width = (100 * t / T) + "%";
+  document.getElementById("topTxt").textContent = `${t.toFixed(1)} / ${T} h`;
 }
 
 function go(where, tab) {
   const main = document.getElementById("main");
+  document.getElementById("side").classList.remove("open");
+  document.getElementById("menuBtn").setAttribute("aria-expanded", "false");
   window.scrollTo(0, 0);
   if (where === "home") { renderNav("home"); return home(main); }
   if (where === "final") { renderNav("final"); return final(main); }
   const m = C.find(x => x.id == where);
   renderNav(m.id); modulo(main, m, tab || "visao");
 }
+document.getElementById("menuBtn").onclick = e => {
+  const o = document.getElementById("side").classList.toggle("open");
+  e.currentTarget.setAttribute("aria-expanded", o);
+};
 
 function home(el) {
-  const t = total(), T = totalHoras();
+  const t = total(), T = totalHoras(), pct = t / T, R = 70, L = 2 * Math.PI * R;
+  const prox = C.find(m => !concluida(m));
   el.innerHTML = `
-  <h2>Painel geral</h2>
-  <div class="aviso">Curso livre de autoestudo. <b>Não é pós-graduação lato sensu reconhecida pelo MEC</b> e o certificado emitido aqui é de conclusão interna, sem validade acadêmica oficial. Para título de especialista com validade, matricule-se em instituição credenciada; este material serve como trilha de estudo e preparação.</div>
-  <div class="card grid">
-    <div class="kpi"><b>${t.toFixed(1)} h</b><span class="sub">de ${T} h</span></div>
-    <div class="kpi"><b>${Math.round(100 * t / T)}%</b><span class="sub">progresso</span></div>
-    <div class="kpi"><b>${C.filter(m => horasMod(m) >= m.horas - 1e-9).length}/${C.length}</b><span class="sub">disciplinas concluídas</span></div>
-    <div class="kpi"><b>${S.final ? Math.round(S.final.pct * 100) + "%" : "—"}</b><span class="sub">prova final</span></div>
+  <section class="hero">
+    <div><div class="eyebrow">Curso livre de autoestudo</div>
+      <h1>Gestão de custos e controle de obras</h1>
+      <p>Da formação do orçamento ao encerramento da obra: 10 disciplinas de 20 horas com videoaulas, apostilas em PDF e avaliações de múltipla escolha.</p>
+      ${prox ? `<button class="btn pri" data-go="${prox.id}">${t > 0 ? "Continuar" : "Começar"}: disciplina ${pad(prox.id)} →</button>` : `<button class="btn pri" data-go="final">Fazer a prova final →</button>`}
+    </div>
+    <div class="ring" role="img" aria-label="Progresso ${Math.round(pct * 100)}%">
+      <svg viewBox="0 0 170 170"><circle cx="85" cy="85" r="${R}" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="12"/>
+        <circle cx="85" cy="85" r="${R}" fill="none" stroke="#e0b83c" stroke-width="12" stroke-linecap="round" stroke-dasharray="${L}" stroke-dashoffset="${L * (1 - pct)}"/></svg>
+      <div class="c"><b>${Math.round(pct * 100)}%</b><span>${t.toFixed(1)} de ${T} h</span></div>
+    </div>
+  </section>
+  <div class="stats">
+    <div class="stat"><b>${C.filter(concluida).length}/${C.length}</b><span>disciplinas concluídas</span></div>
+    <div class="stat"><b>${C.length * 4}</b><span>videoaulas selecionadas</span></div>
+    <div class="stat"><b>${nQuestoes()}</b><span>questões comentadas</span></div>
+    <div class="stat"><b>${S.final ? Math.round(S.final.pct * 100) + "%" : "—"}</b><span>prova final</span></div>
   </div>
-  <div class="card"><h3>Como as 20 h de cada disciplina são contabilizadas</h3>
-    <p>Vídeos (30%) · Leitura da apostila (30%) · Atividade prática (20%) · Avaliação com aprovação ≥ 70% (20%).</p>
-    <p class="sub">As horas representam a carga de estudo planejada para o conjunto da disciplina (inclui assistir às playlists completas, estudar o PDF, fazer a prática e revisar). Seja honesto no autorregistro: o app só mede o que você marca.</p></div>
-  <div class="card">${C.map(m => `<div style="margin:10px 0"><a href="#" data-go="${m.id}"><b>${m.id}. ${esc(m.titulo)}</b></a>
-    <div class="bar"><i style="width:${100 * horasMod(m) / m.horas}%"></i></div><span class="sub">${horasMod(m).toFixed(1)}/${m.horas} h</span></div>`).join("")}</div>
-  <button class="btn noprint" id="reset">Zerar progresso</button>`;
-  el.querySelectorAll("[data-go]").forEach(a => a.onclick = e => { e.preventDefault(); go(a.dataset.go); });
-  el.querySelector("#reset").onclick = () => { if (confirm("Apagar todo o progresso deste navegador?")) { S = { m: {}, final: null, nome: "" }; save(); go("home"); } };
+  <div class="sect"><h2>Grade curricular</h2><span class="sub">${T} horas no total</span></div>
+  <div class="grid">${C.map(m => `<button class="dc" data-go="${m.id}"><span class="n">DISCIPLINA ${pad(m.id)}</span><h3>${esc(m.titulo)}</h3>
+    <div class="bar"><i style="width:${100 * horasMod(m) / m.horas}%"></i></div>
+    <div class="meta"><span>${horasMod(m).toFixed(1)} de ${m.horas} h</span>${concluida(m) ? '<span class="tag ok">Concluída</span>' : `<span class="tag">${stepsOf(m).filter(x => x[1]).length}/4 etapas</span>`}</div></button>`).join("")}</div>
+  <div class="sect"><h2>Sobre este curso</h2></div>
+  <div class="notice"><b>Curso livre, sem validade acadêmica oficial.</b> Não é pós-graduação lato sensu reconhecida pelo MEC, e o certificado emitido aqui é de conclusão interna. Para título de especialista, matricule-se em instituição credenciada e use esta trilha como preparação e reforço.</div>
+  <div class="card" style="margin-top:16px"><h3>Como as 20 horas de cada disciplina são contadas</h3>
+    <div class="split"><div><b>30%</b>Videoaulas</div><div><b>30%</b>Leitura da apostila</div><div><b>20%</b>Atividade prática</div><div><b>20%</b>Avaliação (mín. 70%)</div></div>
+    <p class="sub" style="margin-bottom:0">As horas são a carga de estudo planejada e dependem do seu registro honesto: o app só mede o que você marca. Vídeos e valores citados vêm de fontes de terceiros; confira data e fonte antes de usar profissionalmente.</p></div>
+  <p style="margin-top:20px"><button class="btn ghost" id="reset">Zerar meu progresso</button></p>`;
+  el.querySelectorAll("[data-go]").forEach(a => a.onclick = () => go(a.dataset.go));
+  const rb = el.querySelector("#reset"); let armed = false;
+  rb.onclick = () => { if (!armed) { armed = true; rb.textContent = "Clique de novo para apagar todo o progresso"; return; } S = { m: {}, final: null, nome: "" }; save(); go("home"); };
 }
 
 function modulo(el, m, tab) {
   const s = mod(m.id);
-  const tabs = [["visao", "Visão geral"], ["videos", "Vídeos"], ["leitura", "Leitura (PDF)"], ["pratica", "Prática"], ["quiz", "Avaliação"]];
-  const pdf = `pdfs/modulo-${String(m.id).padStart(2, "0")}.pdf`;
+  const tabs = [["visao", "Visão geral"], ["videos", "Videoaulas"], ["leitura", "Apostila"], ["pratica", "Prática"], ["quiz", "Avaliação"]];
+  const pdf = `pdfs/modulo-${pad(m.id)}.pdf`;
   let body = "";
-  if (tab === "visao") body = `<div class="card"><h3>Ementa</h3><ul>${m.ementa.map(e => `<li>${esc(e)}</li>`).join("")}</ul>
-      <p class="sub">${m.horas} h · ${m.videos.length} vídeos · 1 apostila · 1 prática · ${m.quiz.length} questões</p></div>`;
-  if (tab === "videos") body = `<div class="card">${m.videos.map((v, i) => `
-      <div><div class="vid"><div><b>${i + 1}. ${esc(v.t)}</b><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=${encodeURIComponent(v.id)}">Abrir no YouTube</a> <span class="sub">(se o player abaixo não carregar)</span></div>
-      <label><input type="checkbox" data-v="${i}" ${s.v[i] ? "checked" : ""}> assisti</label></div>
-      <iframe loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.id)}"></iframe></div>`).join("")}
-      <p class="sub">Vídeos de terceiros, selecionados por título e tema; a qualidade e a atualização variam. Confira data e fonte antes de adotar qualquer prática ou valor citado.</p></div>`;
-  if (tab === "leitura") body = `<div class="card"><p><a class="btn pri" href="${pdf}" target="_blank">Abrir/baixar PDF da apostila</a></p>
-      <label><input type="checkbox" id="lido" ${s.leitura ? "checked" : ""}> Li e estudei a apostila</label></div>
-      <div class="card texto">${m.texto}</div>`;
-  if (tab === "pratica") body = `<div class="card"><h3>Atividade prática</h3><p>${esc(m.pratica)}</p>
-      <label><input type="checkbox" id="prat" ${s.pratica ? "checked" : ""}> Concluí a atividade prática</label></div>`;
-  if (tab === "quiz") return quiz(el, m, tabs);
-  el.innerHTML = `<div class="noprint sub">Disciplina ${m.id} de ${C.length}</div><h2>${esc(m.titulo)}</h2>
-    <div class="tabs">${tabs.map(t => `<button data-t="${t[0]}" class="${t[0] === tab ? "on" : ""}">${t[1]}</button>`).join("")}</div>${body}`;
-  bindTabs(el, m);
-  el.querySelectorAll("[data-v]").forEach(c => c.onchange = () => { s.v[c.dataset.v] = c.checked; save(); renderNav(m.id); });
-  const l = el.querySelector("#lido"); if (l) l.onchange = () => { s.leitura = l.checked; save(); renderNav(m.id); };
-  const p = el.querySelector("#prat"); if (p) p.onchange = () => { s.pratica = p.checked; save(); renderNav(m.id); };
+  if (tab === "visao") body = `<div class="card"><h3>Ementa</h3><ul class="ementa">${m.ementa.map(e => `<li>${esc(e)}</li>`).join("")}</ul>
+      <p class="sub" style="margin-bottom:0">${m.horas} h · ${m.videos.length} videoaulas · 1 apostila · 1 atividade prática · ${m.quiz.length} questões</p></div>`;
+  if (tab === "videos") body = `<div class="vgrid">${m.videos.map((v, i) => {
+      const url = `https://www.youtube.com/watch?v=${encodeURIComponent(v.id)}`;
+      const media = EMBED
+        ? `<div class="vm"><iframe loading="lazy" allowfullscreen title="${esc(v.t)}" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.id)}"></iframe></div>`
+        : `<a class="vm" target="_blank" rel="noopener" href="${url}" aria-label="Assistir: ${esc(v.t)}"><span class="vn">VÍDEO ${pad(i + 1)}</span><span class="play"></span></a>`;
+      return `<article class="vc">${media}<div class="vb"><b>${esc(v.t)}</b><div class="vf">
+        <a target="_blank" rel="noopener" href="${url}">${EMBED ? "Abrir no YouTube ↗" : "Assistir no YouTube ↗"}</a>
+        <label class="chk"><input type="checkbox" data-v="${i}" ${s.v[i] ? "checked" : ""}> Assisti</label></div></div></article>`;
+    }).join("")}</div>
+    <p class="sub" style="margin-top:14px">Vídeos de terceiros, selecionados por título e tema. Qualidade e atualização variam: confira data e fonte antes de adotar qualquer prática ou valor citado.</p>`;
+  if (tab === "leitura") body = `<div class="card" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+      <a class="btn pri" href="${pdf}" target="_blank" rel="noopener">Baixar apostila em PDF</a>
+      <label class="chk"><input type="checkbox" id="lido" ${s.leitura ? "checked" : ""}> Li e estudei a apostila</label></div>
+      <div class="card texto" style="margin-top:16px">${m.texto}</div>`;
+  if (tab === "pratica") body = `<div class="card"><div class="eyebrow">Atividade prática</div><h3 style="margin:6px 0 10px">Aplique o que estudou</h3><p style="margin-top:0">${esc(m.pratica)}</p>
+      <label class="chk"><input type="checkbox" id="prat" ${s.pratica ? "checked" : ""}> Concluí a atividade prática</label></div>`;
+  if (tab === "quiz") body = `<div class="card score"><div><div class="eyebrow">Avaliação da disciplina</div><div class="sub">${m.quiz.length} questões · aprovação com ${PASS * 100}% de acertos</div></div>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:14px"><span class="sub">Melhor resultado: <b>${s.quiz ? Math.round(s.quiz.pct * 100) + "%" : "—"}</b></span><button class="btn pri" id="start">Iniciar avaliação</button></div></div><div id="qa"></div>`;
+  el.innerHTML = `<section class="banner"><div class="eyebrow">Disciplina ${pad(m.id)} de ${pad(C.length)} · ${m.horas} horas</div><h2>${esc(m.titulo)}</h2>
+    <div class="bar" style="background:rgba(255,255,255,.2);margin-bottom:14px"><i style="width:${100 * horasMod(m) / m.horas}%"></i></div>
+    <div class="steps">${stepsOf(m).map(x => `<span class="step ${x[1] ? "ok" : ""}">${x[1] ? "✓" : "○"} ${x[0]}</span>`).join("")}</div></section>
+    <div class="tabs" role="tablist">${tabs.map(t => `<button role="tab" data-t="${t[0]}" class="${t[0] === tab ? "on" : ""}" aria-selected="${t[0] === tab}">${t[1]}</button>`).join("")}</div>${body}`;
+  el.querySelectorAll("[data-t]").forEach(b => b.onclick = () => go(m.id, b.dataset.t));
+  el.querySelectorAll("[data-v]").forEach(c => c.onchange = () => { s.v[c.dataset.v] = c.checked; save(); refresh(m); });
+  const l = el.querySelector("#lido"); if (l) l.onchange = () => { s.leitura = l.checked; save(); refresh(m); };
+  const p = el.querySelector("#prat"); if (p) p.onchange = () => { s.pratica = p.checked; save(); refresh(m); };
+  const st = el.querySelector("#start");
+  if (st) st.onclick = () => runQuiz(el.querySelector("#qa"), m.quiz, "Avaliação da disciplina", pct => {
+    if (!s.quiz || pct > s.quiz.pct) s.quiz = { pct }; save(); refresh(m);
+  });
 }
-function bindTabs(el, m) { el.querySelectorAll("[data-t]").forEach(b => b.onclick = () => go(m.id, b.dataset.t)); }
+// Atualiza menu e banner sem recarregar a aba (preserva o scroll e o estado do quiz).
+function refresh(m) {
+  renderNav(m.id);
+  const b = document.querySelector(".banner");
+  if (b) { b.querySelector(".bar i").style.width = (100 * horasMod(m) / m.horas) + "%";
+    b.querySelector(".steps").innerHTML = stepsOf(m).map(x => `<span class="step ${x[1] ? "ok" : ""}">${x[1] ? "✓" : "○"} ${x[0]}</span>`).join(""); }
+}
 
 function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 
 function runQuiz(el, questions, title, onDone) {
-  // embaralha também as alternativas, mantendo o gabarito
   const qs = shuffle(questions).map(q => {
     const idx = shuffle(q.o.map((_, i) => i));
     return { q: q.q, o: idx.map(i => q.o[i]), c: idx.indexOf(q.c), e: q.e };
   });
-  const ans = new Array(qs.length).fill(null);
-  el.innerHTML = `<h3>${esc(title)}</h3><p class="sub">Aprovação: ${PASS * 100}% de acertos. As alternativas são embaralhadas a cada tentativa.</p>` +
-    qs.map((q, i) => `<div class="card q"><b>${i + 1}. ${esc(q.q)}</b>${q.o.map((o, j) => `<label class="opt"><input type="radio" name="q${i}" value="${j}"> ${esc(o)}</label>`).join("")}<div class="exp" id="e${i}"></div></div>`).join("") +
-    `<button class="btn pri" id="fin">Corrigir</button>`;
+  const L = "ABCDEFG";
+  el.innerHTML = `<p class="sub" style="margin:16px 0 0">${esc(title)}. As alternativas são embaralhadas a cada tentativa.</p>` +
+    qs.map((q, i) => `<div class="card q"><h3><span>${pad(i + 1)}</span>${esc(q.q)}</h3>${q.o.map((o, j) => `<label class="opt"><input type="radio" name="q${i}" value="${j}"><span class="l">${L[j]}</span><span>${esc(o)}</span></label>`).join("")}<div class="exp" id="e${i}"></div></div>`).join("") +
+    `<p><button class="btn pri" id="fin">Corrigir avaliação</button></p>`;
   el.querySelector("#fin").onclick = () => {
     let ok = 0;
     qs.forEach((q, i) => {
-      const sel = el.querySelector(`input[name=q${i}]:checked`); const v = sel ? +sel.value : null;
-      el.querySelectorAll(`input[name=q${i}]`).forEach(r => { const lab = r.parentElement; r.disabled = true; if (+r.value === q.c) lab.classList.add("ok"); else if (+r.value === v) lab.classList.add("bad"); });
+      const sel = el.querySelector(`input[name=q${i}]:checked`), v = sel ? +sel.value : null;
+      el.querySelectorAll(`input[name=q${i}]`).forEach(r => { const lab = r.closest(".opt"); r.disabled = true; if (+r.value === q.c) lab.classList.add("ok"); else if (+r.value === v) lab.classList.add("bad"); });
       if (v === q.c) ok++;
-      el.querySelector("#e" + i).textContent = (v === q.c ? "✔ Correto. " : (v === null ? "Sem resposta. " : "✘ Incorreto. ")) + q.e;
+      el.querySelector("#e" + i).textContent = (v === q.c ? "Correto. " : v === null ? "Sem resposta. " : "Incorreto. ") + q.e;
     });
     const pct = ok / qs.length; el.querySelector("#fin").remove();
-    const r = document.createElement("div"); r.className = "card";
-    r.innerHTML = `<h3>${ok}/${qs.length} (${Math.round(pct * 100)}%) — ${pct >= PASS ? '<span class="tag ok">Aprovado</span>' : '<span class="tag">Não atingiu 70%</span>'}</h3>`;
-    el.appendChild(r); onDone(pct);
+    const r = document.createElement("div"); r.className = "card score"; r.style.marginTop = "16px";
+    r.innerHTML = `<b>${Math.round(pct * 100)}%</b><div><div style="font:600 20px var(--serif)">${ok} de ${qs.length} acertos</div>${pct >= PASS ? '<span class="tag ok">Aprovado</span>' : '<span class="tag">Abaixo de 70%: revise a apostila e tente de novo</span>'}</div>`;
+    el.appendChild(r); r.scrollIntoView({ block: "center" }); onDone(pct);
   };
-}
-
-function quiz(el, m, tabs) {
-  const s = mod(m.id);
-  el.innerHTML = `<h2>${esc(m.titulo)}</h2><div class="tabs">${tabs.map(t => `<button data-t="${t[0]}" class="${t[0] === "quiz" ? "on" : ""}">${t[1]}</button>`).join("")}</div>
-    <div class="card">Melhor resultado: ${s.quiz ? `${Math.round(s.quiz.pct * 100)}%` : "—"} <div class="noprint"><button class="btn pri" id="start">Iniciar avaliação</button></div></div><div id="qa"></div>`;
-  bindTabs(el, m);
-  el.querySelector("#start").onclick = () => runQuiz(el.querySelector("#qa"), m.quiz, "Avaliação da disciplina", pct => {
-    if (!s.quiz || pct > s.quiz.pct) s.quiz = { pct }; save(); renderNav(m.id);
-  });
 }
 
 function final(el) {
   const pronto = tudoPronto();
-  el.innerHTML = `<h2>Prova final e certificado</h2>
-    <div class="card"><p>A prova final sorteia ${FINAL_N} questões de todo o banco (${C.reduce((a, m) => a + m.quiz.length, 0)} questões). Libera-se após concluir as 200 h (${total().toFixed(1)} h feitas).</p>
-    <p>Melhor resultado: ${S.final ? Math.round(S.final.pct * 100) + "%" : "—"}</p>
-    <button class="btn pri noprint" id="start" ${pronto ? "" : "disabled"}>${pronto ? "Iniciar prova final" : "Conclua todas as disciplinas para liberar"}</button></div><div id="qa"></div><div id="cert"></div>`;
+  el.innerHTML = `<section class="banner"><div class="eyebrow">Conclusão do curso</div><h2>Prova final e certificado</h2>
+    <p style="margin:0;opacity:.88;max-width:60ch">${FINAL_N} questões sorteadas do banco de ${nQuestoes()}, cobrindo as 10 disciplinas. Aprovação com ${PASS * 100}%.</p></section>
+    <div class="card score" style="margin-top:16px"><div><b style="font-family:var(--serif);font-size:20px">${pronto ? "Prova liberada" : "Prova bloqueada"}</b><div class="sub">${pronto ? "Você concluiu as 200 horas." : `Faltam ${(totalHoras() - total()).toFixed(1)} h para liberar (${total().toFixed(1)} de ${totalHoras()} h).`}</div></div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:14px"><span class="sub">Melhor resultado: <b>${S.final ? Math.round(S.final.pct * 100) + "%" : "—"}</b></span>
+    <button class="btn pri" id="start" ${pronto ? "" : "disabled"}>Iniciar prova final</button></div></div><div id="qa"></div><div id="cert"></div>`;
   const cert = () => {
-    if (S.final && S.final.pct >= PASS && pronto) {
-      el.querySelector("#cert").innerHTML = `<div class="card noprint"><label>Nome para o certificado: <input id="nome" value="${esc(S.nome)}" style="font:inherit;padding:6px"></label>
-      <button class="btn pri" id="imp">Gerar certificado</button></div>`;
-      el.querySelector("#imp").onclick = () => {
-        S.nome = el.querySelector("#nome").value.trim(); save();
-        el.querySelector("#cert").insertAdjacentHTML("beforeend", `<div class="cert"><h2>Certificado de Conclusão</h2><p>Certificamos que</p><h1>${esc(S.nome || "________________")}</h1>
-        <p>concluiu o curso livre <b>Especialização em Custos e Controle de Obras</b>,<br>com carga horária de autoestudo de <b>${totalHoras()} horas</b> e aproveitamento de <b>${Math.round(S.final.pct * 100)}%</b> na prova final.</p>
-        <p class="sub">Curso livre de autoestudo. Não equivale a pós-graduação lato sensu reconhecida pelo MEC.</p></div><button class="btn noprint" onclick="print()">Imprimir / salvar PDF</button>`);
-      };
-    }
+    if (!(S.final && S.final.pct >= PASS && pronto)) return;
+    el.querySelector("#cert").innerHTML = `<div class="card" style="margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap"><label for="nome" class="sub">Nome no certificado</label>
+      <input id="nome" value="${esc(S.nome)}" style="font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);flex:1;min-width:200px"><button class="btn pri" id="gen">Gerar certificado</button></div><div id="cv"></div>`;
+    el.querySelector("#gen").onclick = () => {
+      S.nome = el.querySelector("#nome").value.trim(); save();
+      el.querySelector("#cv").innerHTML = `<div class="cert"><div class="crest">CO</div><div class="eyebrow">Certificado de conclusão</div><h2 style="margin-top:8px">Custos e Controle de Obras</h2>
+        <p class="sub" style="margin:14px 0 0">Certificamos que</p><div class="nome">${esc(S.nome || "Nome do aluno")}</div>
+        <p style="max-width:52ch;margin:0 auto">concluiu o curso livre de autoestudo com carga horária de <b>${totalHoras()} horas</b> e aproveitamento de <b>${Math.round(S.final.pct * 100)}%</b> na prova final.</p>
+        <p class="sub" style="margin:22px 0 0">Curso livre. Não equivale a pós-graduação lato sensu reconhecida pelo MEC. Para guardar, tire uma captura de tela.</p></div>`;
+    };
   };
   cert();
-  const b = el.querySelector("#start");
-  if (pronto) b.onclick = () => {
-    const pool = C.flatMap(m => m.quiz);
-    runQuiz(el.querySelector("#qa"), shuffle(pool).slice(0, FINAL_N), "Prova final", pct => { if (!S.final || pct > S.final.pct) S.final = { pct }; save(); renderNav("final"); cert(); });
+  if (pronto) el.querySelector("#start").onclick = () => {
+    runQuiz(el.querySelector("#qa"), shuffle(C.flatMap(m => m.quiz)).slice(0, FINAL_N), "Prova final", pct => { if (!S.final || pct > S.final.pct) S.final = { pct }; save(); renderNav("final"); cert(); });
   };
 }
 go("home");
