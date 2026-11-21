@@ -4,10 +4,10 @@
   horas: 20,
   ementa: ["Homem-hora (HH) e RUP", "Fatores que afetam a produtividade", "Amostragem do trabalho", "Custo da mão de obra", "Custo horário de equipamentos", "Lean Construction e desperdícios"],
   videos: [
-    { t: "RUP: Razão Unitária de Produção", q: "RUP razão unitária de produção construção civil" },
-    { t: "Produtividade da mão de obra na construção", q: "produtividade mão de obra construção civil como medir" },
-    { t: "Lean Construction: os 7 desperdícios", q: "lean construction desperdícios obra" },
-    { t: "Custo horário de equipamentos de construção", q: "custo horário equipamentos construção depreciação manutenção" }
+    { t: "Cálculo do R.U.P e C.U.M - Construção Civil", id: "8uCC-w6fweM" },
+    { t: "Como calcular a produtividade da mão de obra?", id: "5ab9tzdqEuI" },
+    { t: "[Webinar] Lean Construction para resultados", id: "Jf3OdPCdUfI" },
+    { t: "Como calcular a Depreciação de Máquinas e Equipamentos?", id: "YKKkHXk0-aM" }
   ],
   texto: `
 <h2>1. Produtividade é a maior alavanca de custo de mão de obra</h2>

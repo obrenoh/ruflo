@@ -4,10 +4,10 @@
   horas: 20,
   ementa: ["Custo, despesa e investimento", "Custos diretos, indiretos, fixos e variáveis", "Ciclo de vida e curva de influência sobre o custo", "EAP e plano de contas da obra", "Índices: CUB, INCC, SINAPI"],
   videos: [
-    { t: "Gestão de custos na construção civil: visão geral", q: "gestão de custos construção civil visão geral" },
-    { t: "Custo direto e indireto em obras", q: "custo direto e custo indireto em obras construção civil" },
-    { t: "EAP (WBS) aplicada a obras", q: "EAP estrutura analítica do projeto obra construção civil" },
-    { t: "CUB, INCC e SINAPI: para que servem", q: "CUB INCC SINAPI diferença construção civil" }
+    { t: "[Palestra] Gestão de Custos na Construção Civil", id: "C166pe8wBhY" },
+    { t: "Custos Diretos e Indiretos - Orçamento de Obras", id: "8-HXyU9N44M" },
+    { t: "Como fazer uma Estrutura Analítica de Projeto (EAP) para Orçamento de Obras", id: "tyCwDoZe8F0" },
+    { t: "O que são o CUB e o INCC-M?", id: "qWAWpA_Rx1E" }
   ],
   texto: `
 <h2>1. Conceitos básicos</h2>

@@ -4,10 +4,10 @@
   horas: 20,
   ementa: ["Estrutura administrativa do canteiro", "Fluxo de caixa e exposição máxima", "Financiamento e capital de giro", "Tributos na construção", "Patrimônio de afetação e RET", "Documentação e diário de obra"],
   videos: [
-    { t: "Fluxo de caixa de obra e exposição máxima", q: "fluxo de caixa de obra construção civil exposição máxima" },
-    { t: "Tributação na construção civil", q: "tributação construção civil ISS INSS retenção" },
-    { t: "Incorporação imobiliária: patrimônio de afetação e RET", q: "patrimônio de afetação RET incorporação imobiliária" },
-    { t: "Diário de obra e gestão documental", q: "diário de obra importância pleito documentação" }
+    { t: "Fluxo de caixa da obra: como evitar falta de dinheiro - Trilha Gestão de Obra, Vídeo 3", id: "_hsnF-ND9Xc" },
+    { t: "Diferença entre ISS e INSS na construção civil", id: "SQMIe82yFwI" },
+    { t: "Patrimônio de Afetação - O que é? Como funciona?", id: "bMKeGHcTykQ" },
+    { t: "Usando o RDO (Diário de Obra) como ferramenta de gestão e de administração contratual", id: "GjWBv3r5bUg" }
   ],
   texto: `
 <h2>1. Lucro não é caixa</h2>

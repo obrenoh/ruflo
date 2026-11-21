@@ -4,10 +4,10 @@
   horas: 20,
   ementa: ["Modalidades de empreitada", "Medição e memória de cálculo", "Glosas, retenções e garantias", "Reajuste e reequilíbrio", "Aditivos (Lei 14.133/2021)", "Responsabilidade solidária"],
   videos: [
-    { t: "Tipos de contrato de empreitada na construção", q: "empreitada preço global preço unitário diferença contrato obra" },
-    { t: "Medição de obras e boletim de medição", q: "medição de obras boletim de medição memória de cálculo" },
-    { t: "Reajuste e reequilíbrio econômico-financeiro", q: "reajuste reequilíbrio econômico financeiro contrato obra" },
-    { t: "Lei 14.133/2021 aplicada a obras e serviços de engenharia", q: "lei 14133 2021 obras serviços de engenharia aditivos" }
+    { t: "Regimes de contratação de obra que você deve conhecer", id: "Lu2tvLAMfxk" },
+    { t: "Como elaborar e apresentar boletim de medição de obra", id: "DvDoBT_qPNc" },
+    { t: "Reajuste, Repactuação e Reequilíbrio: Recupere o que é seu", id: "MiRzGI8Hqbw" },
+    { t: "Dica 28. Aditivo de quantidade na Lei nº 8.666/93 e na Lei nº 14.133/21", id: "rZ_LCQrR7OM" }
   ],
   texto: `
 <h2>1. O contrato é o principal instrumento de controle de custo</h2>

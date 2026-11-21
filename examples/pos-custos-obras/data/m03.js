@@ -4,10 +4,10 @@
   horas: 20,
   ementa: ["Dimensionamento de durações", "Método do Caminho Crítico (CPM)", "Linha de balanço", "Curva S físico-financeira", "Histograma e nivelamento de recursos", "Last Planner e PPC"],
   videos: [
-    { t: "Método do caminho crítico (CPM) na prática", q: "método do caminho crítico CPM exemplo prático" },
-    { t: "Linha de balanço para obras repetitivas", q: "linha de balanço planejamento obras edifícios" },
-    { t: "Cronograma físico-financeiro e curva S", q: "cronograma físico financeiro curva S obra" },
-    { t: "Last Planner System e PPC", q: "last planner system PPC lean construction" }
+    { t: "Cálculo do caminho crítico", id: "RsXrQOGLT0Y" },
+    { t: "O que é Linha de Balanço?", id: "TBDnOwCVO9s" },
+    { t: "O que é Curva S? O que posso controlar com uma Curva S de um projeto?", id: "3pNK8_xuPZI" },
+    { t: "ZIGURAT Lean Day: Lean Construction e Last Planner System", id: "Nd28I67qGgo" }
   ],
   texto: `
 <h2>1. Planejar é conectar escopo, tempo e custo</h2>

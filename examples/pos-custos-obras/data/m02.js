@@ -4,10 +4,10 @@
   horas: 20,
   ementa: ["Levantamento de quantitativos", "Composição unitária de custos", "SINAPI e TCPO", "Curva ABC", "BDI e formação de preço", "Encargos sociais"],
   videos: [
-    { t: "Como fazer orçamento de obra do zero", q: "como fazer orçamento de obra passo a passo" },
-    { t: "Composição de custo unitário", q: "composição de custo unitário SINAPI explicação" },
-    { t: "BDI: o que é e como calcular (Acórdão TCU 2622/2013)", q: "BDI como calcular acórdão TCU 2622 2013" },
-    { t: "Curva ABC aplicada a orçamento de obras", q: "curva ABC orçamento obras construção" }
+    { t: "Como Fazer Orçamento de Obras Passo a Passo", id: "q8VxmWs4Tl0" },
+    { t: "Composição Unitária no SINAPI - Série Interpretando 04", id: "Fli3rwTp5dA" },
+    { t: "BDI de Obras: Como Calcular Segundo o TCU (Passo a Passo)", id: "4KiXqW4KfhM" },
+    { t: "Como Fazer uma Curva ABC na Prática [Orçamento de Obras]", id: "60VnEqcMrMI" }
   ],
   texto: `
 <h2>1. Do projeto ao preço</h2>

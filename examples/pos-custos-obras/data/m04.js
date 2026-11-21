@@ -4,10 +4,10 @@
   horas: 20,
   ementa: ["PV, EV, AC e BAC", "Índices CPI e SPI", "Previsões: EAC, ETC, VAC, TCPI", "Critérios de medição do EV", "Limitações do EVM e Earned Schedule", "Painel de controle gerencial"],
   videos: [
-    { t: "Gerenciamento do valor agregado (EVM) explicado", q: "gerenciamento do valor agregado EVM CPI SPI explicado" },
-    { t: "EAC, ETC e TCPI: previsões de custo", q: "EAC ETC TCPI previsão de custo PMBOK" },
-    { t: "EVM aplicado à construção civil", q: "valor agregado EVM obras construção civil exemplo" },
-    { t: "Earned Schedule: complemento ao EVM", q: "earned schedule cronograma valor agregado" }
+    { t: "Módulo 02 Aula 13 - Análise do Valor Agregado: Indicadores", id: "9QqLdAZ4tYw" },
+    { t: "Análise do Valor Agregado em Projetos - Gerenciamento de Custos", id: "RHCLt2xThA0" },
+    { t: "PMP Exam Prep - Earned Value - EAC, ETC and VAC (em inglês)", id: "--bBlf6Kn1c" },
+    { t: "What is the Earned Schedule? (em inglês)", id: "s-3fHiZwY1Q" }
   ],
   texto: `
 <h2>1. Por que comparar apenas "gasto × orçado" engana</h2>

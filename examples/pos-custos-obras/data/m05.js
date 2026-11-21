@@ -4,10 +4,10 @@
   horas: 20,
   ementa: ["Processo de compras", "Mapa de cotação e negociação", "Curva ABC de insumos", "Lote econômico e estoque de segurança", "Perdas de materiais", "Logística e almoxarifado"],
   videos: [
-    { t: "Processo de suprimentos em construtoras", q: "gestão de suprimentos construção civil processo de compras" },
-    { t: "Lote econômico de compra (LEC)", q: "lote econômico de compra LEC fórmula exemplo" },
-    { t: "Controle de estoque no canteiro de obras", q: "controle de estoque almoxarifado canteiro de obras" },
-    { t: "Perdas de materiais na construção civil", q: "perdas de materiais construção civil como reduzir" }
+    { t: "Processos integrados de compras e suprimentos na construção civil [Sienge Podcast #30]", id: "fgk34l9Esek" },
+    { t: "Lote Econômico de Compras (LEC) - Fundamentos e Exemplo", id: "YaK1eUuLUXk" },
+    { t: "Curso de Almoxarife de Obras (SEDUC/AL) - Módulo IV: Gestão de Estoque", id: "qXV0ZOimNaQ" },
+    { t: "Just in Time na Construção Civil: o que é e como aplicar o JIT nas obras", id: "OLO-H-U6WvY" }
   ],
   texto: `
 <h2>1. Suprimentos é função estratégica</h2>

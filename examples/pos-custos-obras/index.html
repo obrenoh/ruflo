@@ -132,10 +132,10 @@ function modulo(el, m, tab) {
   if (tab === "visao") body = `<div class="card"><h3>Ementa</h3><ul>${m.ementa.map(e => `<li>${esc(e)}</li>`).join("")}</ul>
       <p class="sub">${m.horas} h · ${m.videos.length} vídeos · 1 apostila · 1 prática · ${m.quiz.length} questões</p></div>`;
   if (tab === "videos") body = `<div class="card">${m.videos.map((v, i) => `
-      <div><div class="vid"><div><b>${esc(v.t)}</b><br>${v.id ? "" : `<a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(v.q)}">Buscar no YouTube: “${esc(v.q)}”</a>`}</div>
+      <div><div class="vid"><div><b>${i + 1}. ${esc(v.t)}</b><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=${encodeURIComponent(v.id)}">Abrir no YouTube</a> <span class="sub">(se o player abaixo não carregar)</span></div>
       <label><input type="checkbox" data-v="${i}" ${s.v[i] ? "checked" : ""}> assisti</label></div>
-      ${v.id ? `<iframe loading="lazy" allowfullscreen src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.id)}"></iframe>` : ""}</div>`).join("")}
-      <p class="sub">Escolha playlists/aulas completas e de fonte confiável (universidades, conselhos, entidades técnicas). Para embutir o player, informe o <code>id</code> do vídeo em <code>data/mNN.js</code>.</p></div>`;
+      <iframe loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.id)}"></iframe></div>`).join("")}
+      <p class="sub">Vídeos de terceiros, selecionados por título e tema; a qualidade e a atualização variam. Confira data e fonte antes de adotar qualquer prática ou valor citado.</p></div>`;
   if (tab === "leitura") body = `<div class="card"><p><a class="btn pri" href="${pdf}" target="_blank">Abrir/baixar PDF da apostila</a></p>
       <label><input type="checkbox" id="lido" ${s.leitura ? "checked" : ""}> Li e estudei a apostila</label></div>
       <div class="card texto">${m.texto}</div>`;

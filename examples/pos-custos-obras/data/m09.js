@@ -4,10 +4,10 @@
   horas: 20,
   ementa: ["Gestão de riscos e valor monetário esperado", "Reservas de contingência", "Custos da qualidade (CNQ)", "FVS, PBQP-H e NBR 15575", "NR-18, NR-35 e PGR", "Custo dos acidentes"],
   videos: [
-    { t: "Gestão de riscos em obras: matriz e VME", q: "gestão de riscos obras matriz probabilidade impacto valor monetário esperado" },
-    { t: "Custos da qualidade e da não qualidade", q: "custos da qualidade e da não qualidade construção civil" },
-    { t: "NR-18 e NR-35 na prática", q: "NR 18 NR 35 trabalho em altura construção civil" },
-    { t: "PBQP-H e SiAC", q: "PBQP-H SiAC construtoras qualidade" }
+    { t: "Como fazer matriz de análise de riscos", id: "hxPjCp_hBg0" },
+    { t: "Conceitos Importantes - Quais são os custos de qualidade (aula completa)", id: "2S_KdTlIcpI" },
+    { t: "NR-35 Trabalho em Altura - Treinamento Atualizado Completo 2026", id: "JE0pdE7iUNo" },
+    { t: "Aprenda a fazer um Plano da Qualidade da Obra (PBQP-H SiAC)", id: "KLEId45XzcA" }
   ],
   texto: `
 <h2>1. Risco é custo que ainda não aconteceu</h2>

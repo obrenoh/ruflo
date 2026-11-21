@@ -4,10 +4,10 @@
   horas: 20,
   ementa: ["Reorçamento periódico", "Análise de pleitos (claims) e atrasos", "Custos de aceleração e prolongamento", "BIM 5D", "Encerramento, as-built e recebimento", "Lições aprendidas e indicadores"],
   videos: [
-    { t: "Reorçamento de obras: como e quando fazer", q: "reorçamento de obra custo a completar" },
-    { t: "Pleitos e claims na construção civil", q: "pleito claim construção civil análise de atrasos" },
-    { t: "BIM 5D: orçamento integrado ao modelo", q: "BIM 5D orçamento quantitativos modelo" },
-    { t: "Encerramento de obra, as-built e recebimento", q: "encerramento de obra as-built termo de recebimento" }
+    { t: "O que é BIM 5D? O BIM no Orçamento de Obras!", id: "nUGQ8TrSOKs" },
+    { t: "How to Analyze Construction Delays for EOT Claims (em inglês)", id: "XS-Admp26JQ" },
+    { t: "Atraso na empreitada: como construtores podem melhorar seus contratos", id: "sLucikKUa58" },
+    { t: "Passo a passo do projeto de As-Built: como fazer na prática", id: "m81-XnVz9k0" }
   ],
   texto: `
 <h2>1. Reorçamento: atualizar a previsão, não só registrar o passado</h2>
